@@ -50,11 +50,13 @@ module.exports = {
             )
             .catch((err) => res.status(500).json(err));
     },
+    // delete a thought
     deleteThought(req, res) {
         Thought.findOneAndDelete({ _id: req.params.thoughtId })
             .then(() => res.json({ message: 'Thought Deleted!' }))
             .catch((err) => res.status(500).json(err))
     },
+    // create a reaction
     createReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
@@ -68,6 +70,7 @@ module.exports = {
             )
             .catch((err) => res.status(500).json(err))
     },
+    // delete a reaction
     deleteReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
